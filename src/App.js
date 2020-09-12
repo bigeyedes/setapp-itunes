@@ -1,8 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
 import './assets/scss/main.scss';
 
-import Albums from './components/Albums/Albums'
+import Sidebar from './components/Sidebar/Sidebar'
+import Content from './components/Content/Content'
 
 function App() {
 	const [error, setError] = useState(null);
@@ -30,8 +32,11 @@ function App() {
 		return <div>Loading...</div>;
 	  } else {
 		return (
-			<Container className="App">
-				<Albums items={items}/>
+			<Container fluid className="App">
+				<Row>
+					<Sidebar />
+					<Content items={items}/>
+				</Row>
 			</Container>
 		);
 	  }
