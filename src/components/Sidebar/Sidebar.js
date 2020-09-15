@@ -1,7 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import Col from 'react-bootstrap/Col';
+import {ItemContext} from '../../App'
 
-function Sidebar({items}) {
+function Sidebar() {
+	const items = useContext(ItemContext)
+
 	const [categoryName, setCategoryName] = useState()
 
 	let itemsCategories = []
@@ -14,7 +17,7 @@ function Sidebar({items}) {
 		setCategoryName(itemsCategoriesWithNoDubles[0].filter(name => name.includes(categoryTargetName)))
 	}
 
-	items.map(item => (
+	items.albums.map(item => (
 		itemsCategories.push(item.category.attributes.term)
 	))
 

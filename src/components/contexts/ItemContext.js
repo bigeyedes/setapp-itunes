@@ -1,10 +1,13 @@
-import React, {createContext } from 'react';
+import React, {createContext} from 'react';
 
-export const ItemContext = createContext(themes);
+const items = null
+
+export const ItemContext = createContext();
 
 const ItemContextProvider = (props) => {
+
 	return (
-		<ItemContext.Provider value={themes}>
+		<ItemContext.Provider value={items}>
 		{props.children}
 		</ItemContext.Provider>
 	)

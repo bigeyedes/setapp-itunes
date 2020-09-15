@@ -5,11 +5,11 @@ import Header from '../Header/Header'
 import Albums from '../Albums/Albums'
 
 
-function Content({items}) {
+function Content() {
 	return (
 		<Col sm={10} className="content-container">
 			<Header/>
-			<Albums items={items}/>
+			<Albums />
 		</Col>
 	);
 

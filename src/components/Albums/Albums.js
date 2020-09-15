@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useContext} from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import Image from 'react-bootstrap/Image';
+import {ItemContext} from '../../App'
 
-function Albums({items}) {
+function Albums() {
+	const items = useContext(ItemContext)
 
 	useEffect(() => {
 		document.body.addEventListener('click', (e) => {
@@ -20,10 +22,9 @@ function Albums({items}) {
 		})
 	}, [])
 
-		// console.log(items.find(o => o.category.attributes.term === 'Soundtrack'))
 	return (
 		<Row className="albums-container">
-				{items.map(item => (
+				{items.albums.map(item => (
 				<Col xl={3} md={4} key={item.id.label}>
 					<Card className="album-item" key={item.id.attributes["im:id"]}>
 						<Card.Body>
