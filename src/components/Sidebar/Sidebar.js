@@ -1,9 +1,9 @@
-import React, {useState, useContext} from 'react';
+import React, {useEffect, useContext} from 'react';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import {ItemContext, CategoryContext} from '../../App'
 
-function Sidebar() {
-	const [items, setItems] = useContext(ItemContext)
+function Sidebar({sidebarCategories}) {
 	const [category, setCategory] = useContext(CategoryContext)
 
 	let itemsCategories = []
@@ -13,10 +13,10 @@ function Sidebar() {
 
 	const handleFilterCategory = (e) => {
 		const categoryTargetName = e.target.innerHTML
-		setCategory(itemsCategoriesWithNoDubles[0].filter(name => name.includes(categoryTargetName)))
+		setCategory(categoryTargetName)
 	}
 
-	items.map(item => (
+	sidebarCategories.map(item => (
 		itemsCategories.push(item.category.attributes.term)
 	))
 

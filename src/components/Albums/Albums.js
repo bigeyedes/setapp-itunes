@@ -36,7 +36,7 @@ function Albums() {
 								<Card.Title>Category: {item.category.attributes.term}</Card.Title>
 								<Card.Text>Release date: {item["im:releaseDate"].attributes.label}</Card.Text>
 								<Card.Text>Rights: {item.rights.label}</Card.Text>
-								<a href={item.id.label} target='_blank' rel="noopener noreferrer"><Button variant="primary">{item["im:price"].label}</Button></a>
+
 							</summary>
 							<Card.Title>{item["im:artist"].label}</Card.Title>
 							<Card.Text>{item.title.label}</Card.Text>

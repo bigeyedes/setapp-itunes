@@ -14,8 +14,9 @@ function App() {
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] =  useState([])
 	const [category, setCategory] = useState('All')
+	const [sidebarCategories, setsidebarCategories] = useState()
 
-	const searchForCategoryItems = (array, keyword) => {
+	const searchForItems = (array, keyword) => {
 		const regExp = new RegExp(keyword,"gi");
 		const check = obj => {
 		  if (obj !== null && typeof obj === "object") { return Object.values(obj).some(check) }
@@ -30,6 +31,7 @@ function App() {
 			const reponse = await fetch("https://itunes.apple.com/us/rss/topalbums/limit=100/json")
 			const data = await reponse.json()
 			setItems(data.feed.entry);
+			setsidebarCategories(data.feed.entry);
 			setIsLoaded(true)
 		} catch (e) {
 			setError(e.message)
@@ -40,6 +42,9 @@ function App() {
 		loadiTunesItems()
 	}, [])
 
+	useEffect(() => {
+		setItems(searchForItems(items, category))
+	}, [category])
 
 	if(error){
 		return error.message
@@ -51,7 +56,7 @@ function App() {
 				<Row>
 					<ItemContext.Provider value={[items, setItems]}>
 						<CategoryContext.Provider value={[category, setCategory]}>
-							<Sidebar />
+							<Sidebar sidebarCategories={sidebarCategories}/>
 							<Content />
 						</CategoryContext.Provider>
 					</ItemContext.Provider>
