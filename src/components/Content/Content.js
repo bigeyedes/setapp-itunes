@@ -4,8 +4,8 @@ import Col from 'react-bootstrap/Col';
 import Header from '../Header/Header'
 import Albums from '../Albums/Albums'
 
-function Content({items}) {
 
+function Content({items}) {
 	return (
 		<Col sm={10} className="content-container">
 			<Header/>

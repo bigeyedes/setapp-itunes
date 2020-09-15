@@ -1,0 +1,8 @@
+@mixin black-btn {
+	margin: 10px 0;
+	background: $black;
+	color: $white;
+	border: none;
+	transition: 0.3s ease;
+	padding: 10px 20px;
+}

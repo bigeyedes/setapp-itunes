@@ -15,13 +15,12 @@ function Albums({items}) {
 				cart.classList.remove('cart-details-active')
 			}
 			if(e.target.classList.contains('show-details')){
-				
 				e.target.parentNode.parentNode.querySelector('.cart-details').classList.add('cart-details-active')
-			} 
+			}
 		})
 	}, [])
-	
 
+		// console.log(items.find(o => o.category.attributes.term === 'Soundtrack'))
 	return (
 		<Row className="albums-container">
 				{items.map(item => (
@@ -32,7 +31,7 @@ function Albums({items}) {
 								<Image src={item["im:image"][2].label} fluid />
 							</div>
 							<summary className="cart-details">
-								<Card.Title>Category: {item.category.attributes.label}</Card.Title>
+								<Card.Title>Category: {item.category.attributes.term}</Card.Title>
 								<Card.Text>Release date: {item["im:releaseDate"].attributes.label}</Card.Text> 
 								<Card.Text>Rights: {item.rights.label}</Card.Text>
 								<a href={item.id.label} target='_blank' rel="noopener noreferrer"><Button variant="primary">{item["im:price"].label}</Button></a> 

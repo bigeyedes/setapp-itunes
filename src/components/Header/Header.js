@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import Row from 'react-bootstrap/Row';
 
 function Header() {
 
@@ -6,7 +7,10 @@ function Header() {
 
 	return (
 		<header className="header-container">
-			Category: {category}
+			<Row>
+				<div>Category: {category}</div>
+				<input type="text" placeholder="Title, artist, category..." />
+			</Row>
 		</header>
 	);
 

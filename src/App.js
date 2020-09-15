@@ -34,8 +34,8 @@ function App() {
 		return (
 			<Container fluid className="App">
 				<Row>
-					<Sidebar />
-					<Content items={items}/>
+					<Sidebar items={items}/>
+					<Content items={items} />
 				</Row>
 			</Container>
 		);

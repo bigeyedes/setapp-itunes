@@ -11,14 +11,14 @@
 	src: url(../fonts/OpenSans-Regular.ttf);
 }
 @font-face {
-	font-family: 'OpenSans Regular';
+	font-family: 'OpenSans Light';
 	src: url(../fonts/OpenSans-Light.ttf);
 }
 //FONTS
 $extrabold: 'OpenSans Extra-bold';
 $bold: 'OpenSans Bold';
 $regular: 'OpenSans Regular';
-$light: 'OpenSans Regular';
+$light: 'OpenSans Light';
 $huge: 56px;
 $big: 48px;
 $normal: 24px;
@@ -27,3 +27,4 @@ $small: 16px;
 //COLORS
 $black: #222222;
 $white: #fff;
+$purple: #5C4EBD

@@ -7,11 +7,47 @@
 		font-family: $extrabold;
 		font-size: $normal;
 		margin: 50px 0;
+		input {
+			display: block;
+			margin-left: 50px;
+			font-family: $light;
+			font-size: $small;
+			width: 30%;
+			border: none;
+			border-radius: none;
+			border-bottom: 2px solid $black;
+			transition: .3s ease;
+			&:focus {
+				border: none;
+				outline: none;
+				border-bottom: 2px solid $purple;
+			}
+		}
 	}
 	.sidebar-container {
-		font-family: $extrabold;
-		font-size: $big;
 		padding: 50px;
+		h1 {
+			font-family: $extrabold;
+			font-size: $big;
+		}
+		p {
+			font-size: $normal;
+			font-family: $bold;
+			margin-top: 50px;
+		}
+		ul {
+			margin-left: 0;
+			padding: 0;
+			li {
+				list-style-type: none;
+				font-size: $small;
+				cursor: pointer;
+				transition: .3s ease;
+				&:hover {
+					opacity: 0.6
+				}
+			}
+		}
 	}
 	.albums-container {
 		.album-item {
@@ -43,14 +79,17 @@
 				background: $white;
 				padding: 30px;
 				opacity: 0;
-				border-radius: 20px
+				border-radius: 20px;
+				button {
+					@include black-btn
+				}
 			}
 			.cart-details-active {
 				animation: cartAcive .3s forwards ease-out;
 				display: block
 			}
-			h5 {
-				font-family: $extrabold;
+			.h5 {
+				font-family: $bold;
 				font-size: $normal;
 			}
 			.cart-buttons {
@@ -58,8 +97,26 @@
 				flex-wrap: wrap;
 				justify-content: space-between;
 				button {
-					margin: 10px 0;
+					@include black-btn;
+					background: $white;
+					color: $black;
+					&:hover {
+						background: $black;
+						color: $white;
+					}
 				}
+				a {
+					button {
+						background: $black;
+						color: $white;
+						&:hover {
+							background: $white;
+							color: $black;
+						}
+					}
+				}
+
+				
 			}
 		}
 	}
