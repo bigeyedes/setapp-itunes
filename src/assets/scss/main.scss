@@ -6,7 +6,13 @@
 	header{
 		font-family: $extrabold;
 		font-size: $normal;
-		margin: 50px 0;
+		padding: 50px;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		@media(max-width: 1200px){
+			padding: 20px;
+		}
 		input {
 			display: block;
 			margin-left: 50px;
@@ -26,9 +32,15 @@
 	}
 	.sidebar-container {
 		padding: 50px;
+		@media(max-width: 1200px){
+			padding: 20px;
+		}
 		h1 {
 			font-family: $extrabold;
-			font-size: $big;
+			font-size: $big_rwd;
+			@media(max-width: 992px){
+				font-size: $normal;
+			}
 		}
 		p {
 			font-size: $normal;
@@ -38,6 +50,7 @@
 		ul {
 			margin-left: 0;
 			padding: 0;
+			line-height: 30px;
 			li {
 				list-style-type: none;
 				font-size: $small;
@@ -58,7 +71,7 @@
 			border: none;
 			transition: .3s ease;
 			&:hover {
-				box-shadow: 0 10px 40px rgba($color: #000000, $alpha: 0.2);
+				box-shadow: 0 30px 40px rgba($color: #000000, $alpha: 0.2);
 			}
 			.album-image {
 				overflow: hidden;
@@ -68,6 +81,10 @@
 					height: auto;
 					border-radius: 10px;
 				}
+			}
+			.wishlist-btn {
+				background: none;
+				border: none;
 			}
 			.cart-details {
 				display: none;

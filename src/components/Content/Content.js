@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import Col from 'react-bootstrap/Col';
 
 import Header from '../Header/Header'
@@ -7,7 +7,7 @@ import Albums from '../Albums/Albums'
 
 function Content() {
 	return (
-		<Col sm={10} className="content-container">
+		<Col xm={10} md={9} className="content-container">
 			<Header/>
 			<Albums />
 		</Col>

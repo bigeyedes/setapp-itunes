@@ -1,11 +1,10 @@
 import React, {useState, useContext} from 'react';
 import Col from 'react-bootstrap/Col';
-import {ItemContext} from '../../App'
+import {ItemContext, CategoryContext} from '../../App'
 
 function Sidebar() {
-	const items = useContext(ItemContext)
-
-	const [categoryName, setCategoryName] = useState()
+	const [items, setItems] = useContext(ItemContext)
+	const [category, setCategory] = useContext(CategoryContext)
 
 	let itemsCategories = []
 	let itemsCategoriesWithNoDubles = []
@@ -14,17 +13,17 @@ function Sidebar() {
 
 	const handleFilterCategory = (e) => {
 		const categoryTargetName = e.target.innerHTML
-		setCategoryName(itemsCategoriesWithNoDubles[0].filter(name => name.includes(categoryTargetName)))
+		setCategory(itemsCategoriesWithNoDubles[0].filter(name => name.includes(categoryTargetName)))
 	}
 
-	items.albums.map(item => (
+	items.map(item => (
 		itemsCategories.push(item.category.attributes.term)
 	))
 
 	itemsCategoriesWithNoDubles.push(filterDuplicateCategories(itemsCategories))
 
 	return (
-		<Col sm={2}>
+		<Col xl={2} md={3}>
 		<aside className="sidebar-container">
 			<h1>Setapp iTunes</h1>
 			<div>

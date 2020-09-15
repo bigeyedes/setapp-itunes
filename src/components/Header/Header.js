@@ -1,16 +1,13 @@
 import React, {useContext} from 'react';
-import Row from 'react-bootstrap/Row';
-import {ItemContext} from '../../App'
+import {CategoryContext} from '../../App'
 
 function Header() {
-	const category = useContext(ItemContext);
+	const [category, setCategory] = useContext(CategoryContext)
 
 	return (
 		<header className="header-container">
-			<Row>
-				<div>Category: {category.category}</div>
+				<div className="category-name">Category: {category}</div>
 				<input type="text" placeholder="Title, artist, category..." />
-			</Row>
 		</header>
 	);
 

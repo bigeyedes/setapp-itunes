@@ -7,11 +7,23 @@ import Sidebar from './components/Sidebar/Sidebar'
 import Content from './components/Content/Content'
 
 export const ItemContext = React.createContext()
+export const CategoryContext = React.createContext()
 
 function App() {
 	const [error, setError] = useState(null);
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [items, setItems] =  useState([])
+	const [category, setCategory] = useState('All')
+
+	const searchForCategoryItems = (array, keyword) => {
+		const regExp = new RegExp(keyword,"gi");
+		const check = obj => {
+		  if (obj !== null && typeof obj === "object") { return Object.values(obj).some(check) }
+		  if (Array.isArray(obj)) { return obj.some(check) }
+		  return (typeof obj === "string" || typeof obj === "number") && regExp.test(obj);
+		}
+		return array.filter(check);
+	}
 
 	const loadiTunesItems = async () => {
 		try {
@@ -28,7 +40,7 @@ function App() {
 		loadiTunesItems()
 	}, [])
 
-	const contextValues = {category: 'All', albums: items}
+
 	if(error){
 		return error.message
 	} else if(!isLoaded){
@@ -37,9 +49,11 @@ function App() {
 		return (
 			<Container fluid className="App">
 				<Row>
-					<ItemContext.Provider value={contextValues}>
-						<Sidebar />
-						<Content />
+					<ItemContext.Provider value={[items, setItems]}>
+						<CategoryContext.Provider value={[category, setCategory]}>
+							<Sidebar />
+							<Content />
+						</CategoryContext.Provider>
 					</ItemContext.Provider>
 				</Row>
 			</Container>
