@@ -5,6 +5,23 @@
 #root{
 	background: $black;
 	color: $white;
+	.lodaing-container {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 100;
+		background: $black;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		p {
+			font-size: $huge;
+			font-family: $bold;
+			color: $purple;
+		}
+	}
 }
 
 .App {
@@ -197,7 +214,6 @@
 				}
 			}
 		}
-		
 	}
 }
 
