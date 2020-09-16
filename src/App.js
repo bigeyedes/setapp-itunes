@@ -1,4 +1,4 @@
-import React, {useEffect, useState, createContext, useContext} from 'react';
+import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import './assets/scss/main.scss';
@@ -57,7 +57,7 @@ function App() {
 					<ItemContext.Provider value={[items, setItems]}>
 						<CategoryContext.Provider value={[category, setCategory]}>
 							<Sidebar sidebarCategories={sidebarCategories}/>
-							<Content />
+							<Content searchForItems={searchForItems} loadiTunesItems={loadiTunesItems}/>
 						</CategoryContext.Provider>
 					</ItemContext.Provider>
 				</Row>

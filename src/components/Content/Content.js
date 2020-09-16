@@ -5,10 +5,10 @@ import Header from '../Header/Header'
 import Albums from '../Albums/Albums'
 
 
-function Content() {
+function Content(props) {
 	return (
 		<Col xm={10} md={9} className="content-container">
-			<Header/>
+			<Header searchForItems={props.searchForItems} loadiTunesItems={props.loadiTunesItems}/>
 			<Albums />
 		</Col>
 	);

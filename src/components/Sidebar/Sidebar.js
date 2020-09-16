@@ -1,7 +1,7 @@
-import React, {useEffect, useContext} from 'react';
+import React, {useContext} from 'react';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import {ItemContext, CategoryContext} from '../../App'
+
+import {CategoryContext} from '../../App'
 
 function Sidebar({sidebarCategories}) {
 	const [category, setCategory] = useContext(CategoryContext)
