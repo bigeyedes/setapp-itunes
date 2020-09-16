@@ -34,6 +34,7 @@ function Sidebar({sidebarCategories}) {
 		<Col xl={2} lg={3} md={12}>
 		<aside className="sidebar-container">
 			<h1>Setapp iTunes</h1>
+			<div className="category-name">Category: <span>{category}</span></div>
 			<div>
 				<p>Filters:</p>
 				<ul>

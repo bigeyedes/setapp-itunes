@@ -20,6 +20,7 @@ function App() {
 	const loadiTunesItems = async () => {
 		try {
 			const reponse = await fetch("https://itunes.apple.com/us/rss/topalbums/limit=100/json")
+			console.log(reponse.status)
 			const data = await reponse.json()
 			setItems(data.feed.entry);
 			//Set items which will be basic, after stack reset when seach and filter

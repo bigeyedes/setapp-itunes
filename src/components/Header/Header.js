@@ -16,8 +16,7 @@ function Header(props) {
 
 	return (
 		<header className="header-container">
-				<div className="category-name">Category: {category}</div>
-				<input onChange={handleSerach} type="text" placeholder="Title, artist, category..." ref={searchRef} />
+			<input onChange={handleSerach} type="text" placeholder="Title, artist, category..." ref={searchRef} />
 		</header>
 	);
 

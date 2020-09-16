@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import Col from 'react-bootstrap/Col';
 
 import Header from '../Header/Header'
