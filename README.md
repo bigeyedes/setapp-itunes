@@ -1,7 +1,7 @@
 #### Setapp iTunes Recruitment Application
 
 Setapp iTunes it's an application which display top 100 of music albums. All of them are sortable and searchable.
-See live: []()
+See live: [https://setapp-itunes.web.app/](https://setapp-itunes.web.app/)
 
 ## Technologies:
 1. HTML5
