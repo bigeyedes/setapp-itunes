@@ -2,7 +2,13 @@
 @import 'variables';
 @import 'mixins';
 
+#root{
+	background: $black;
+	color: $white;
+}
+
 .App {
+	max-width: 1920px;
 	header{
 		font-family: $extrabold;
 		font-size: $normal;
@@ -13,26 +19,39 @@
 		@media(max-width: 1200px){
 			padding: 20px;
 		}
+		@media(max-width: 600px){
+			display: block;
+		}
 		input {
 			display: block;
 			margin-left: 50px;
 			font-family: $light;
 			font-size: $small;
+			color: $white;
 			width: 30%;
 			border: none;
 			border-radius: none;
-			border-bottom: 2px solid $black;
+			border-bottom: 2px solid $white;
+			background: none;
 			transition: .3s ease;
+			@media(max-width: 600px){
+				margin-left: 0;
+				margin-top: 10px;
+				width: 100%;
+			}
 			&:focus {
 				border: none;
 				outline: none;
 				border-bottom: 2px solid $purple;
 			}
+			&::placeholder {
+				color: $white;
+			}
 		}
 	}
 	.sidebar-container {
 		padding: 50px;
-		@media(max-width: 1200px){
+		@media(max-width: 1600px){
 			padding: 20px;
 		}
 		h1 {
@@ -41,109 +60,152 @@
 			@media(max-width: 992px){
 				font-size: $normal;
 			}
+			@media(min-width: 1920px){
+				font-size: $huge;
+			}
 		}
 		p {
 			font-size: $normal;
 			font-family: $bold;
 			margin-top: 50px;
 		}
+		button {
+			display: none;
+			@include black-btn;
+			background: $purple;
+			cursor: pointer;
+			color: $black;
+			@media(max-width: 992px){
+				display: block
+			}
+		}
 		ul {
 			margin-left: 0;
 			padding: 0;
 			line-height: 30px;
+			@media(max-width: 992px){
+				display: flex;
+				flex-wrap: wrap;
+				height: 0;
+				overflow: hidden;
+			}
 			li {
 				list-style-type: none;
 				font-size: $small;
 				cursor: pointer;
 				transition: .3s ease;
+				padding: 3px 10px;
+				width: fit-content;
 				&:hover {
-					opacity: 0.6
+					background: $purple;
+					color: $black;
+					border-radius: 5px;
 				}
 			}
+		}
+		.filters-active {
+			height: auto;
+			overflow: visible;
 		}
 	}
 	.albums-container {
-		.album-item {
-			position: relative;
-			margin: 10px;
-			border-radius: 20px;
-			box-shadow: 0 10px 20px rgba($color: #000000, $alpha: 0.1);
-			border: none;
-			transition: .3s ease;
-			&:hover {
-				box-shadow: 0 30px 40px rgba($color: #000000, $alpha: 0.2);
+		.cart-container {
+			padding: 0;
+			@media(max-width: 1200px){
+				margin-left: auto;
+				margin-right: auto;
 			}
-			.album-image {
-				overflow: hidden;
-				margin-bottom: 20px;
-				img {
-					width: 100%;
-					height: auto;
-					border-radius: 10px;
-				}
-			}
-			.wishlist-btn {
-				background: none;
-				border: none;
-			}
-			.cart-details {
-				display: none;
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				background: $white;
-				padding: 30px;
-				opacity: 0;
+			.album-item {
+				position: relative;
+				margin: 10px;
 				border-radius: 20px;
-				button {
-					@include black-btn
+				border: none;
+				transition: .3s ease;
+				background: $black;
+				cursor: pointer;
+				&:hover {
+					box-shadow: 0 0px 60px rgba($color: $purple, $alpha: 0.6);
 				}
-			}
-			.cart-details-active {
-				animation: cartAcive .3s forwards ease-out;
-				display: block
-			}
-			.h5 {
-				font-family: $bold;
-				font-size: $normal;
-			}
-			.cart-buttons {
-				display: flex;
-				flex-wrap: wrap;
-				justify-content: space-between;
-				button {
-					@include black-btn;
-					background: $white;
-					color: $black;
-					&:hover {
-						background: $black;
-						color: $white;
+				.album-image {
+					overflow: hidden;
+					margin-bottom: 20px;
+					img {
+						width: 100%;
+						height: auto;
+						border-radius: 10px;
 					}
 				}
-				a {
+				.album-category {
+					color: $purple;
+					font-size: $tiny !important;
+					font-family: $bold;
+					text-transform: uppercase;
+					letter-spacing: 1.5px;
+				}
+				.cart-details {
+					display: none;
+					position: absolute;
+					top: 0;
+					left: 0;
+					width: 100%;
+					height: 100%;
+					background: $white;
+					padding: 30px;
+					opacity: 0;
+					border-radius: 20px;
 					button {
-						background: $black;
+						@include black-btn
+					}
+				}
+				.cart-details-active {
+					animation: cartAcive .3s forwards ease-out;
+					display: block;
+					background: $black;
+				}
+				.card-title {
+					font-family: $bold;
+					font-size: $small;
+				}
+				.card-text {
+					font-size: $tiny;
+				}
+				.cart-buttons {
+					display: flex;
+					flex-wrap: wrap;
+					justify-content: space-between;
+					button {
+						@include black-btn;
+						background: none;
+						border: none;
 						color: $white;
 						&:hover {
-							background: $white;
+							background: $black;
+							color: $white;
+						}
+					}
+					a {
+						button {
+							background: $purple;
 							color: $black;
+							font-family: $bold;
+							&:hover {
+								background: $black;
+								color: $white;
+							}
 						}
 					}
 				}
-
-				
 			}
 		}
+		
 	}
 }
 
 @keyframes cartAcive {
-  0% { 
+  0% {
 	  opacity: 0;
 	}
-  100% { 
-	  opacity: 1; 
+  100% {
+	  opacity: 1;
 	}
 }

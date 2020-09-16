@@ -14,6 +14,14 @@ function Sidebar({sidebarCategories}) {
 	const handleFilterCategory = (e) => {
 		const categoryTargetName = e.target.innerHTML
 		setCategory(categoryTargetName)
+		document.querySelector('ul').classList.remove('filters-active')
+	}
+
+	const handleFiltersShowing = (e) => {
+		const filters = document.querySelector('ul').classList
+		const cssClass = 'filters-active'
+		filters.contains(cssClass) ? filters.remove(cssClass)  : filters.add(cssClass)
+		filters.contains(cssClass) ? e.target.innerHTML = 'Hide' : e.target.innerHTML = 'Show'
 	}
 
 	sidebarCategories.map(item => (
@@ -23,7 +31,7 @@ function Sidebar({sidebarCategories}) {
 	itemsCategoriesWithNoDubles.push(filterDuplicateCategories(itemsCategories))
 
 	return (
-		<Col xl={2} md={3}>
+		<Col xl={2} lg={3} md={12}>
 		<aside className="sidebar-container">
 			<h1>Setapp iTunes</h1>
 			<div>
@@ -33,6 +41,7 @@ function Sidebar({sidebarCategories}) {
 						<li onClick={handleFilterCategory} key={uniqueItem}>{uniqueItem}</li>
 					))}
 				</ul>
+				<button onClick={handleFiltersShowing}>Show</button>
 			</div>
 		</aside>
 		</Col>

@@ -7,7 +7,7 @@ import Albums from '../Albums/Albums'
 
 function Content(props) {
 	return (
-		<Col xm={10} md={9} className="content-container">
+		<Col xl={10} lg={9} className="content-container">
 			<Header searchForItems={props.searchForItems} loadiTunesItems={props.loadiTunesItems}/>
 			<Albums />
 		</Col>

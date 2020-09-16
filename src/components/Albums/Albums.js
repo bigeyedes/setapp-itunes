@@ -12,7 +12,6 @@ function Albums() {
 
 	useEffect(() => {
 		document.body.addEventListener('click', (e) => {
-			e.preventDefault();
 			const allCarts = document.querySelectorAll('.cart-details')
 			for(const cart of allCarts){
 				cart.classList.remove('cart-details-active')
@@ -26,7 +25,7 @@ function Albums() {
 	return (
 		<Row className="albums-container">
 				{items.map(item => (
-				<Col xl={3} md={6} key={item.id.label}>
+				<Col className="cart-container" xl={3} lg={4} xs={6} key={item.id.label}>
 					<Card className="album-item" key={item.id.attributes["im:id"]}>
 						<Card.Body>
 							<div className="album-image">
@@ -36,11 +35,10 @@ function Albums() {
 								<Card.Title>Category: {item.category.attributes.term}</Card.Title>
 								<Card.Text>Release date: {item["im:releaseDate"].attributes.label}</Card.Text>
 								<Card.Text>Rights: {item.rights.label}</Card.Text>
-
 							</summary>
+							<Card.Text className="album-category">{item.category.attributes.term}</Card.Text>
 							<Card.Title>{item["im:artist"].label}</Card.Title>
 							<Card.Text>{item.title.label}</Card.Text>
-							<Button className="wishlist-btn"></Button>
 							<div className="cart-buttons">
 								<a href={item.id.label} target='_blank' rel="noopener noreferrer"><Button variant="primary">{item["im:price"].label}</Button></a>
 								<Button className="show-details" variant="secondary">Details</Button>

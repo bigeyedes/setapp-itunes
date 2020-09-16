@@ -18,7 +18,6 @@ function Header(props) {
 		<header className="header-container">
 				<div className="category-name">Category: {category}</div>
 				<input onChange={handleSerach} type="text" placeholder="Title, artist, category..." ref={searchRef} />
-
 		</header>
 	);
 
