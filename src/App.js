@@ -1,10 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 import './assets/scss/main.scss';
 
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Link
+} from "react-router-dom";
+
+import Wishlist from './components/Wishlist/Wishlist'
 import Sidebar from './components/Sidebar/Sidebar'
 import Content from './components/Content/Content'
+
 
 export const ItemContext = React.createContext()
 export const CategoryContext = React.createContext()
@@ -20,7 +30,6 @@ function App() {
 	const loadiTunesItems = async () => {
 		try {
 			const reponse = await fetch("https://itunes.apple.com/us/rss/topalbums/limit=100/json")
-			console.log(reponse.status)
 			const data = await reponse.json()
 			setItems(data.feed.entry);
 			//Set items which will be basic, after stack reset when seach and filter
@@ -61,8 +70,21 @@ function App() {
 				<Row>
 					<ItemContext.Provider value={[items, setItems]}>
 						<CategoryContext.Provider value={[category, setCategory]}>
-							<Sidebar  sidebarCategories={sidebarCategories} />
-							<Content searchForItems={searchForItems} loadiTunesItems={loadiTunesItems}/>
+						<Router>
+							<Col xs={12} className="link-container">
+								<Link to="/">Home</Link>
+								<Link to="/wishlist">My wishlist</Link>
+							</Col>
+							<Switch>
+								<Route path="/wishlist">
+									<Wishlist />
+								</Route>
+								<Route path="/">
+									<Sidebar  sidebarCategories={sidebarCategories} />
+									<Content searchForItems={searchForItems} loadiTunesItems={loadiTunesItems}/>
+								</Route>
+							</Switch>
+						</Router>
 						</CategoryContext.Provider>
 					</ItemContext.Provider>
 				</Row>

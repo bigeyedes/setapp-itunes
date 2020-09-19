@@ -1,5 +1,7 @@
 import React, {useContext, useRef} from 'react';
+
 import {ItemContext, CategoryContext} from '../../App'
+
 
 function Header(props) {
 	const [category, setCategory] = useContext(CategoryContext)
